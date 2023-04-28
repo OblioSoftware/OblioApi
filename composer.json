@@ -1,0 +1,22 @@
+{
+    "name": "obliosoftware/oblio-api",
+    "description": "Oblio.eu API implementation for PHP",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "OblioSoftware\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "OblioSoftware",
+            "email": "tehnic@oblio.eu"
+        }
+    ],
+    "require": {
+         "guzzlehttp/guzzle": "^6.0|^7.0"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "*"
+    }
+}
