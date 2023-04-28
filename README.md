@@ -1,5 +1,10 @@
 # OblioApi
  Oblio.eu API implementation for PHP
+ 
+ Install using composer
+ ```
+ composer require obliosoftware/oblio-api
+ ```
 
 # Create invoice
 
