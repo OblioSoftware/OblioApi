@@ -86,3 +86,28 @@ try {
     // error handle
 }
 ```
+
+# Create custom AccessTokenHandler example
+```
+use OblioSoftware\AccessToken;
+use OblioSoftware\AccessToken\HandlerInterface;
+
+class CustomAccessHandler implements HandlerInterface {
+    private $cacheKey = 'oblio_access_token';
+    
+    public function get(): ?AccessToken
+    {
+        $data = Cache::get($this->cacheKey);
+        $accessToken = new AccessToken($data);
+        if ($accessToken && $accessToken->request_time + $accessToken->expires_in > time()) {
+            return $accessToken;
+        }
+        return null;
+    }
+    
+    public function set(AccessToken $accessToken): void
+    {
+        Cache::set($this->cacheKey, $accessToken->toArray());
+    }
+}
+```
