@@ -92,15 +92,17 @@ try {
 use OblioSoftware\AccessToken;
 use OblioSoftware\AccessToken\HandlerInterface;
 
-class CustomAccessHandler implements HandlerInterface {
+class CustomAccessTokenHandler implements HandlerInterface {
     private $cacheKey = 'oblio_access_token';
     
     public function get(): ?AccessToken
     {
         $data = Cache::get($this->cacheKey);
-        $accessToken = new AccessToken($data);
-        if ($accessToken && $accessToken->request_time + $accessToken->expires_in > time()) {
-            return $accessToken;
+        if ($data !== null) {
+            $accessToken = new AccessToken($data);
+            if ($accessToken && $accessToken->request_time + $accessToken->expires_in > time()) {
+                return $accessToken;
+            }
         }
         return null;
     }
