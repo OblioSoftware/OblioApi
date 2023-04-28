@@ -6,7 +6,7 @@
  composer require obliosoftware/oblio-api
  ```
 
-# Create invoice
+## Create invoice
 
 ```
 $defaultData = array(
@@ -74,7 +74,7 @@ try {
 }
 ```
 
-# Cancel invoice
+## Cancel invoice
 ```
 try {
     $issuerCif = ''; // your company CIF
@@ -87,7 +87,7 @@ try {
 }
 ```
 
-# Create custom AccessTokenHandler example
+## Create custom AccessTokenHandler example
 ```
 use OblioSoftware\AccessToken;
 use OblioSoftware\AccessToken\HandlerInterface;
