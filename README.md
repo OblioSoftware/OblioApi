@@ -1,7 +1,7 @@
 # OblioApi
  Oblio.eu API implementation for PHP
 
-# Examples
+# Create invoice
 
 ```
 $defaultData = array(
@@ -64,6 +64,19 @@ try {
     $api = new OblioSoftware\Api($email, $secret);
     // create invoice:
     $result = $api->createInvoice($defaultData);
+} catch (Exception $e) {
+    // error handle
+}
+```
+
+# Cancel invoice
+```
+try {
+    $issuerCif = ''; // your company CIF
+    $api = new OblioSoftware\Api($email, $secret);
+    // cancel/restore document:
+    $api->setCif($issuerCif);
+    $result = $api->cancel('invoice', $seriesName, $number, true/false);
 } catch (Exception $e) {
     // error handle
 }
