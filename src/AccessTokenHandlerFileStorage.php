@@ -1,17 +1,15 @@
 <?php
 
-namespace OblioSoftware\AccessToken;
+namespace OblioSoftware;
 
-use OblioSoftware\AccessToken;
-
-class HandlerFilestorage implements HandlerInterface {
+class AccessTokenHandlerFileStorage implements AccessTokenHandlerInterface {
     protected $_accessTokenFileHeader   = '<?php die;?>';
     protected $_accessTokenFilePath     = '';
 
     public function __construct($accessTokenFilePath = null)
     {
         $this->_accessTokenFilePath = $accessTokenFilePath === null
-            ? realpath(__DIR__ . '/../..') . '/storage/access_token.php'
+            ? dirname(__DIR__) . '/storage/access_token.php'
             : $accessTokenFilePath;
     }
 

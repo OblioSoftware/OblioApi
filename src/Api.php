@@ -4,8 +4,6 @@ namespace OblioSoftware;
 
 use ValueError;
 use Exception;
-use OblioSoftware\AccessToken\HandlerInterface AS AccessTokenHandlerInterface;
-use OblioSoftware\AccessToken\HandlerFilestorage AS AccessTokenHandlerFilestorage;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 
@@ -28,7 +26,7 @@ class Api {
         $this->_secret = $secret;
         
         if (!$accessTokenHandler) {
-            $accessTokenHandler = new AccessTokenHandlerFilestorage();
+            $accessTokenHandler = new AccessTokenHandlerFileStorage();
         }
         $this->_accessTokenHandler = $accessTokenHandler;
     }

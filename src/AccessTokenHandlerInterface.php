@@ -1,10 +1,8 @@
 <?php
 
-namespace OblioSoftware\AccessToken;
+namespace OblioSoftware;
 
-use OblioSoftware\AccessToken;
-
-interface HandlerInterface {
+interface AccessTokenHandlerInterface {
     /**
      *  @return ?AccessToken $accessToken
      */
