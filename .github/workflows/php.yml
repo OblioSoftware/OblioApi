@@ -36,4 +36,9 @@ jobs:
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 
     - name: Run test suite
+      env: 
+        OBLIO_API_CIF: ${{ secrets.OBLIO_API_CIF }}
+        OBLIO_SERIES_NAME: ${{ secrets.OBLIO_SERIES_NAME }}
+        OBLIO_API_EMAIL: ${{ secrets.OBLIO_API_EMAIL }}
+        OBLIO_API_SECRET: ${{ secrets.OBLIO_API_SECRET }}
       run: ./vendor/bin/phpunit tests --colors=always --display-warnings
