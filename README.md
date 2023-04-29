@@ -1,4 +1,7 @@
 # OblioApi
+
+ ![example workflow](https://github.com/OblioSoftware/OblioApi/actions/workflows/php.yml/badge.svg)
+ 
  Oblio.eu API implementation for PHP
  
  Install using composer
