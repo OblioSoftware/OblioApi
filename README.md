@@ -1,6 +1,6 @@
 # OblioApi
 
- ![example workflow](https://github.com/OblioSoftware/OblioApi/actions/workflows/php.yml/badge.svg)
+ ![test workflow](https://github.com/OblioSoftware/OblioApi/actions/workflows/php.yml/badge.svg)
  
  Oblio.eu API implementation for PHP
  
