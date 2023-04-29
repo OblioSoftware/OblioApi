@@ -93,9 +93,9 @@ try {
 ## Create custom AccessTokenHandler example
 ```
 use OblioSoftware\AccessToken;
-use OblioSoftware\AccessToken\HandlerInterface;
+use OblioSoftware\AccessTokenHandlerInterface;
 
-class CustomAccessTokenHandler implements HandlerInterface {
+class CustomAccessTokenHandler implements AccessTokenHandlerInterface {
     private $cacheKey = 'oblio_access_token';
     
     public function get(): ?AccessToken
