@@ -42,7 +42,7 @@ final class ApiTest extends TestCase
                     'code'          => '',
                     'description'   => '',
                     'price'         => '100',
-                    'measuringUnit' => '',
+                    'measuringUnit' => 'buc',
                     'currency'      => 'RON',
                     'vatName'       => 'Normala',
                     'vatPercentage' => 19,
