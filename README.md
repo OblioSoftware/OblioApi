@@ -96,7 +96,12 @@ try {
     $issuerCif = ''; // your company CIF
     $type = 'products'; // companies, vat_rates, products, clients, series, languages, management
     $name = '';
-    $filters = [];
+    $filters = [
+        'workStation'  => '',
+        'management'   => '',
+        'limitPerPage' => 250,
+        'offset'       => 0,
+    ];
     $api = new OblioSoftware\Api($email, $secret);
     $api->setCif($issuerCif);
     $result = $api->nomenclature($type, $name, $filters);
