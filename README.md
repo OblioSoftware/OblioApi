@@ -90,6 +90,21 @@ try {
 }
 ```
 
+## Nomenclature
+```
+try {
+    $issuerCif = ''; // your company CIF
+    $type = 'products'; // companies, vat_rates, products, clients, series, languages, management
+    $name = '';
+    $filters = [];
+    $api = new OblioSoftware\Api($email, $secret);
+    $api->setCif($issuerCif);
+    $result = $api->nomenclature($type, $name, $filters);
+} catch (Exception $e) {
+    // error handle
+}
+```
+
 ## Create custom AccessTokenHandler example
 ```
 use OblioSoftware\AccessToken;
