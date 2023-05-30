@@ -159,7 +159,7 @@ class Api {
         }
         $request = $this->buildRequest();
         $response = $request->get("/api/nomenclature/{$type}", [
-            'query' => compact('cif') + $filters
+            'query' => compact('cif', 'name') + $filters
         ]);
         $this->_checkErrorResponse($response);
         return json_decode($response->getBody()->getContents(), true);
