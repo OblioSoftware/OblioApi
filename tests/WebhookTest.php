@@ -6,10 +6,9 @@ use PHPUnit\Framework\Attributes\Depends;
 
 final class WebhookTest extends TestCase
 {
-    private int $id = 0;
     private string $topic = 'stock';
 
-    public function testWebhookReadAll(): void
+    public function testWebhookReadAll(): int
     {
         $api = new OblioSoftware\Api(getenv('OBLIO_API_EMAIL'), getenv('OBLIO_API_SECRET'));
         $response = $api->createRequest(
@@ -19,16 +18,18 @@ final class WebhookTest extends TestCase
             ])
         );
         $result = json_decode($response->getBody()->getContents(), true);
-        $this->id = intval($result['data'][0]['id'] ?? 0);
+        $id = intval($result['data'][0]['id'] ?? 0);
 
         $this->assertSame(200, $response->getStatusCode());
+
+        return $id;
     }
 
     #[Depends('testWebhookReadAll')]
-    public function testWebhookCreate(): void
+    public function testWebhookCreate(int $id): int
     {
-        if ($this->id !== 0) {
-            return;
+        if ($id !== 0) {
+            return $id;
         }
 
         $api = new OblioSoftware\Api(getenv('OBLIO_API_EMAIL'), getenv('OBLIO_API_SECRET'));
@@ -41,30 +42,36 @@ final class WebhookTest extends TestCase
         );
 
         $result = json_decode($response->getBody()->getContents(), true);
-        $this->id = intval($result['data']['id'] ?? 0);
+        $id = intval($result['data']['id'] ?? 0);
 
         $this->assertSame(201, $response->getStatusCode());
+
+        return $id;
     }
 
     #[Depends('testWebhookCreate')]
-    public function testWebhookReadOne(): void
+    public function testWebhookReadOne(int $id): int
     {
         $api = new OblioSoftware\Api(getenv('OBLIO_API_EMAIL'), getenv('OBLIO_API_SECRET'));
         $response = $api->createRequest(
-            new OblioSoftware\Request\WebhookRead($this->id)
+            new OblioSoftware\Request\WebhookRead($id)
         );
 
         $this->assertSame(200, $response->getStatusCode());
+
+        return $id;
     }
 
     #[Depends('testWebhookReadOne')]
-    public function testWebhookDelete(): void
+    public function testWebhookDelete(int $id): int
     {
         $api = new OblioSoftware\Api(getenv('OBLIO_API_EMAIL'), getenv('OBLIO_API_SECRET'));
         $response = $api->createRequest(
-            new OblioSoftware\Request\WebhookDelete($this->id)
+            new OblioSoftware\Request\WebhookDelete($id)
         );
 
         $this->assertSame(200, $response->getStatusCode());
+
+        return $id;
     }
 }
