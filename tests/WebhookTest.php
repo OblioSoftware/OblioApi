@@ -6,7 +6,7 @@ use PHPUnit\Framework\Attributes\Depends;
 
 final class WebhookTest extends TestCase
 {
-    private ?int $id;
+    private ?int $id = null;
     private string $topic = 'stock';
 
     public function testWebhookReadAll(): void
