@@ -6,7 +6,7 @@ use PHPUnit\Framework\Attributes\Depends;
 
 final class WebhookTest extends TestCase
 {
-    private ?int $id = null;
+    private int $id = 0;
     private string $topic = 'stock';
 
     public function testWebhookReadAll(): void
@@ -19,7 +19,7 @@ final class WebhookTest extends TestCase
             ])
         );
         $result = json_decode($response->getBody()->getContents(), true);
-        $this->id = $result['data'][0]['id'] ?? null;
+        $this->id = intval($result['data'][0]['id'] ?? 0);
 
         $this->assertSame(200, $response->getStatusCode());
     }
@@ -27,7 +27,7 @@ final class WebhookTest extends TestCase
     #[Depends('testWebhookReadAll')]
     public function testWebhookCreate(): void
     {
-        if ($this->id !== null) {
+        if ($this->id !== 0) {
             return;
         }
 
@@ -41,7 +41,7 @@ final class WebhookTest extends TestCase
         );
 
         $result = json_decode($response->getBody()->getContents(), true);
-        $this->id = $result['data']['id'] ?? null;
+        $this->id = intval($result['data']['id'] ?? 0);
 
         $this->assertSame(201, $response->getStatusCode());
     }
