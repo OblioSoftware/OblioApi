@@ -29,4 +29,5 @@ jobs:
         OBLIO_SERIES_NAME: ${{ secrets.OBLIO_SERIES_NAME }}
         OBLIO_API_EMAIL: ${{ secrets.OBLIO_API_EMAIL }}
         OBLIO_API_SECRET: ${{ secrets.OBLIO_API_SECRET }}
+        WEBHOOK_TEST_ENDPOINT: ${{ secrets.WEBHOOK_TEST_ENDPOINT }}
       run: ./vendor/bin/phpunit tests --colors=always --display-warnings
