@@ -136,3 +136,24 @@ class CustomAccessTokenHandler implements AccessTokenHandlerInterface {
     }
 }
 ```
+
+## Create webhook
+```
+use OblioSoftware\Request\WebhookCreate;
+
+try {
+    $issuerCif = ''; // your company CIF
+    $endpoint = ''; // a valid webhook endpoint
+    $api = new OblioSoftware\Api($email, $secret);
+    $response = $api->createRequest(
+        new WebhookCreate([
+            'cif'       => $issuerCif,
+            'topic'     => 'stock',
+            'endpoint'  => $endpoint,
+        ])
+    );
+    $result = json_decode($response->getBody()->getContents(), true);
+} catch (Exception $e) {
+    // error handle
+}
+```

@@ -201,6 +201,14 @@ class Api {
         ]);
     }
 
+    public function createRequest(ApiRequestInterface $request): \Psr\Http\Message\ResponseInterface
+    {
+        $client = $this->buildRequest();
+        $response = $client->request($request->getMethod(), $request->getUri(), $request->getOptions());
+        $this->_checkErrorResponse($response);
+        return $response;
+    }
+
     public function getAccessToken(): AccessToken
     {
         $accessToken = $this->_accessTokenHandler->get();
