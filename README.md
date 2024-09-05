@@ -1,7 +1,9 @@
 # OblioApi
 
  ![test workflow](https://github.com/OblioSoftware/OblioApi/actions/workflows/php.yml/badge.svg)
- 
+ [![Latest Version on Packagist](https://img.shields.io/packagist/v/obliosoftware/oblio-api.svg?style=flat-square)](https://packagist.org/packages/obliosoftware/oblio-api)
+[![Total Downloads](https://img.shields.io/packagist/dt/obliosoftware/oblio-api.svg?style=flat-square)](https://packagist.org/packages/obliosoftware/oblio-api)
+
  Oblio.eu API implementation for PHP
  
  Install using composer
