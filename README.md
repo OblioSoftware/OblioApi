@@ -13,7 +13,7 @@
 
 ## Create invoice
 
-```
+```php
 $defaultData = array(
     'cif'                => '',
     'client'             => [
@@ -80,7 +80,7 @@ try {
 ```
 
 ## Cancel invoice
-```
+```php
 try {
     $issuerCif = ''; // your company CIF
     $api = new OblioSoftware\Api($email, $secret);
@@ -93,7 +93,7 @@ try {
 ```
 
 ## Nomenclature
-```
+```php
 try {
     $issuerCif = ''; // your company CIF
     $type = 'products'; // companies, vat_rates, products, clients, series, languages, management
@@ -113,7 +113,7 @@ try {
 ```
 
 ## Create custom AccessTokenHandler example
-```
+```php
 use OblioSoftware\AccessToken;
 use OblioSoftware\AccessTokenHandlerInterface;
 
@@ -157,7 +157,7 @@ try {
 ```
 
 ## Create webhook
-```
+```php
 use OblioSoftware\Request\WebhookCreate;
 
 try {
