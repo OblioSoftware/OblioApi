@@ -101,15 +101,18 @@ class Api {
      *  @param string $type - invoice/notice/proforma/receipt
      *  @param string $seriesName
      *  @param int $number
+     *  @param array $options
      *  @return array $response
      */
-    public function delete($type, $seriesName, $number): array
+    public function delete($type, $seriesName, $number, $options = []): array
     {
         $this->_checkType($type);
         $cif = $this->_getCif();
+        $deleteCollect  = $options['deleteCollect'] ?? null;
+        $idempotencyKey = $options['idempotencyKey'] ?? null;
         $request = $this->buildRequest();
         $response = $request->delete("/api/docs/{$type}", [
-            'json' => compact('cif', 'seriesName', 'number')
+            'json' => compact('cif', 'seriesName', 'number', 'deleteCollect', 'idempotencyKey')
         ]);
         $this->_checkErrorResponse($response);
         return json_decode($response->getBody()->getContents(), true);

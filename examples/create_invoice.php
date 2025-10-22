@@ -20,6 +20,7 @@ $defaultData = array(
         'contact'       => '',
         'vatPayer'      => '',
     ],
+    // 'idempotencyKey'     => $orderId, // used to avoid double invoicing
     'issueDate'          => 'yyyy-mm-dd',
     'dueDate'            => '',
     'deliveryDate'       => '',

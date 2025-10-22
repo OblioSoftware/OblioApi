@@ -7,7 +7,10 @@ try {
     $api = new OblioSoftware\Api($email, $secret);
     // delete document:
     $api->setCif($issuerCif);
-    $result = $api->delete('invoice', $seriesName, $number);
+    $result = $api->delete('invoice', $seriesName, $number, [
+        'deleteCollect'  => true,
+        'idempotencyKey' => $orderId,
+    ]);
 } catch (Exception $e) {
     // error handle
 }
