@@ -129,7 +129,6 @@ final class ApiTest extends TestCase
             'orderBy'       => 'id',
             'orderDir'      => 'desc',
         ]);
-        print_r($result);
 
         $this->assertSame(200, $result['status']);
     }
