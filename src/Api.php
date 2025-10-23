@@ -80,6 +80,24 @@ class Api {
     /**
      *  $_cif needs to be set
      *  @param string $type - invoice/notice/proforma/receipt
+     *  @param array $filters
+     *  @return array $response
+     */
+    public function list($type, $filters = []): array
+    {
+        $this->_checkType($type);
+        $filters['cif'] = $this->_getCif();
+        $request = $this->buildRequest();
+        $response = $request->get("/api/docs/{$type}/list", [
+            'query' => $filters
+        ]);
+        $this->_checkErrorResponse($response);
+        return json_decode($response->getBody()->getContents(), true);
+    }
+
+    /**
+     *  $_cif needs to be set
+     *  @param string $type - invoice/notice/proforma/receipt
      *  @param string $seriesName
      *  @param int $number
      *  @param bool $cancel - Cancel(true)/Restore(false)

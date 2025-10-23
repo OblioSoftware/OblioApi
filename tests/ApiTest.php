@@ -118,4 +118,19 @@ final class ApiTest extends TestCase
 
         $this->assertSame(200, $result['status']);
     }
+
+    public function testListInvoice(): void
+    {
+        $api = new OblioSoftware\Api(getenv('OBLIO_API_EMAIL'), getenv('OBLIO_API_SECRET'));
+        $api->setCif(getenv('OBLIO_API_CIF'));
+        $result = $api->list('invoice', [
+            'issuedAfter'   => date('Y-m-d', time() - 3600 * 24 * 7),
+            'issuedBefore'  => date('Y-m-d'),
+            'orderBy'       => 'id',
+            'orderDir'      => 'desc',
+        ]);
+        print_r($result);
+
+        $this->assertSame(200, $result['status']);
+    }
 }
